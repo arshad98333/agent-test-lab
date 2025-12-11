@@ -1,6 +1,7 @@
 def calculate_average(numbers):
+    if not numbers:
+        return 0
     total = sum(numbers)
-    # Bug: This will crash if the list is empty
     return total / len(numbers) 
 
 def main():
