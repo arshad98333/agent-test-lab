@@ -15,11 +15,13 @@ class TaskScheduler:
     def run(self):
         while self.tasks:
             now = datetime.now()
-            for task in list(self.tasks):
+            pending_tasks = []
+            for task in self.tasks:
                 if task["run_time"] <= now:
-                    print(f"Running task: {task['name']} at {now}")
-                    self.tasks.remove(task)
-            time.sleep(0.2)
+                    print(f"Running task: {task["name"]} at {now}")
+                else:
+                    pending_tasks.append(task)
+            self.tasks = pending_tasks
 
 
 if __name__ == "__main__":
